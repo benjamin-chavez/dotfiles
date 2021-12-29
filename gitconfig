@@ -11,11 +11,7 @@
 
 [core]
   pager = less -FRSX
-<<<<<<< HEAD
-	editor = subl -n -w  >/dev/null 2>&1
-=======
   editor = code
->>>>>>> 5a6f611f20f229123b41e7551f6f505882b200fe
 
 [alias]
   co = checkout
@@ -50,14 +46,11 @@
 
 [branch "master"]
   mergeoptions = --no-edit
-<<<<<<< HEAD
 [user]
 	email = ben.m.chavez@gmail.com
 	name = Ben Chavez
 [credential]
 	helper = cache
-=======
 
-[pull]
-  rebase = false
->>>>>>> 5a6f611f20f229123b41e7551f6f505882b200fe
+# [pull]
+#   rebase = false
