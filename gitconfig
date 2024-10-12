@@ -48,7 +48,7 @@
   mergeoptions = --no-edit
 [user]
 	email = ben.m.chavez@gmail.com
-	name = benjamin chavez
+	name = Ben Chavez
 [credential]
 	helper = cache
 
