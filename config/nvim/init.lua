@@ -1,4 +1,6 @@
--- config/nvim/init.vim
+require("ben.core")
+require("ben.lazy")
+-- config/nvim/init.lua
 
 -- set number          " Show line numbers
 -- set relativenumber  " Show relative line numbers
@@ -10,6 +12,4 @@
 -- set smartcase       " Don't ignore case if search pattern has uppercase
 -- set termguicolors   " Enable true color support
 
-lua require('options')
-set number
-set relativenumber
+require('options')

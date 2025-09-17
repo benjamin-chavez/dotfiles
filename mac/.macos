@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-
+# .dotfiles/mac/.macos
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
-
+# Hide AWS VPN Client from Dock
+defaults write com.amazonaws.vpnclient LSUIElement -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false

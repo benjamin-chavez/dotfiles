@@ -2,7 +2,7 @@
 
 # bash_scripts/open_veracity_team_zoom.sh
 
-ZOOM_URL="https://us06web.zoom.us/j/84697931759?pwd=nNGhlap7KnKgzaiPjrRe1jh2D1ZeHt.1"
+ZOOM_URL="https://us06web.zoom.us/j/85671091851?pwd=JsN5yAZC4SiKECe4Xgo7pCOklgPqwz.1"
 
 browser_cmd=""
 

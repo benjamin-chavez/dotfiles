@@ -9,6 +9,9 @@ echo "Setting up dotfiles on $OS system..."
 # Create symbolic links
 # MAC Specific Symlinks
 mkdir -p ~/.hammerspoon
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/ghostty
+
 ln -sf ~/.dotfiles/mac/hammerspoon/init.lua ~/.hammerspoon/init.lua
 ln -sf ~/.dotfiles/mac/.zshrc ~/.zshrc
 
@@ -16,8 +19,9 @@ ln -sf ~/.dotfiles/.aliases ~/.aliases
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/scripts/aws-sso-login-script.sh ~/aws-sso-login-script.sh
 ln -sf ~/.dotfiles/scripts/open_veracity_team_zoom.sh ~/open_veracity_team_zoom.sh
+ln -sf ~/.dotfiles/config/ghostty/config ~/.config/ghostty/config
 
-ln -sf ~/.dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/.dotfiles/config/nvim ~/.config/nvim
 
 # Create symlink for Node.js to ensure it's available system-wide
 if [ -d "$HOME/.nvm/versions/node" ]; then
@@ -41,6 +45,15 @@ if [ -d "$HOME/.nvm/versions/node" ]; then
   fi
 else
   echo "NVM installation not found. Skipping Node.js symlink."
+fi
+
+if [ "$OS" = "Darwin" ]; then
+  echo "Applying macOS specific settings..."
+
+  chmod +x ~/.dotfiles/mac/.macos
+  ~/.dotfiles/mac/.macos
+
+  echo "macOS settings applied. Some changes may require a logout/restart to take effect."
 fi
 
 echo "Dotfiles have been symlinked to home directory."
