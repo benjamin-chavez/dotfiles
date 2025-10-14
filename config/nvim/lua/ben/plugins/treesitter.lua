@@ -9,6 +9,15 @@ return {
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
+    -- configure nvim-ts-autotag FIRST
+    require("nvim-ts-autotag").setup({
+      opts = {
+        enable_close = true,
+        enable_renamce = true,
+        enable_close_on_slash = false,
+      }, 
+    })
+
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
       highlight = {
@@ -19,9 +28,9 @@ return {
       indent = { enable = true },
 
       -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-      },
+      -- autotag = {
+      --  enable = true,
+      -- },
 
       -- ensure these language parsers are installed
       ensure_installed = {
