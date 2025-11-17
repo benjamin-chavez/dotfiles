@@ -1,0 +1,301 @@
+-- Spooky Scary Color Scheme for Neovim
+-- Converted from VS Code theme
+
+local M = {}
+
+local colors = {
+  bg = "#23242b",
+  fg = "#a361ff",
+  
+  -- Accent colors
+  purple = "#894fe0",
+  bright_green = "#90f078",
+  orange = "#ff9018",
+  light_purple = "#b184dd",
+  yellow_orange = "#fca03f",
+  pink = "#C792EA",
+  light_blue = "#82AAFF",
+  cyan = "#89DDFF",
+  red = "#FF5370",
+  yellow = "#FFCB6B",
+  
+  -- UI colors
+  sidebar_bg = "#1c1e22",
+  tab_bg = "#1e1e25",
+  inactive_tab_bg = "#19191f",
+  statusline_bg = "#1b1d20",
+  menu_bg = "#1b1d20",
+  
+  -- Editor colors
+  cursor_line = "#2c2d35",
+  selection = "#3a3a52",  -- Removed alpha, adjusted for visibility
+  selection_fg = "#894fe0",
+  line_nr = "#808080",
+  line_nr_active = "#90f078",
+  
+  -- Misc
+  comment = "#6b9a62",  -- Removed alpha, adjusted for visibility
+  gray = "#afafaf",
+  dark_gray = "#65737E",
+  white = "#ffffff",
+  light_gray = "#d8d8d8",
+  error = "#ff7300",
+}
+
+function M.setup()
+  vim.cmd("hi clear")
+  if vim.fn.exists("syntax_on") then
+    vim.cmd("syntax reset")
+  end
+  
+  vim.o.termguicolors = true
+  vim.g.colors_name = "spooky-scary"
+  
+  local hi = function(group, opts)
+    vim.api.nvim_set_hl(0, group, opts)
+  end
+  
+  -- Editor UI
+  hi("Normal", { fg = colors.fg, bg = colors.bg })
+  hi("NormalFloat", { fg = colors.fg, bg = colors.menu_bg })
+  hi("FloatBorder", { fg = colors.purple, bg = colors.menu_bg })
+  hi("NormalNC", { fg = colors.fg, bg = colors.bg })
+  
+  -- Cursor and Lines
+  hi("Cursor", { fg = colors.bg, bg = colors.bright_green })
+  hi("CursorLine", { bg = colors.cursor_line })
+  hi("CursorLineNr", { fg = colors.bright_green, bold = true })
+  hi("LineNr", { fg = colors.line_nr })
+  
+  -- Selection
+  hi("Visual", { bg = colors.selection })
+  hi("VisualNOS", { bg = colors.selection })
+  
+  -- Search
+  hi("Search", { bg = "#888888" })
+  hi("IncSearch", { bg = colors.purple, fg = colors.bg })
+  hi("CurSearch", { bg = colors.purple, fg = colors.bg })
+  
+  -- Splits and Windows
+  hi("VertSplit", { fg = colors.purple })
+  hi("WinSeparator", { fg = colors.purple })
+  hi("StatusLine", { fg = colors.line_nr, bg = colors.statusline_bg })
+  hi("StatusLineNC", { fg = colors.dark_gray, bg = colors.statusline_bg })
+  
+  -- Tabs
+  hi("TabLine", { fg = colors.fg, bg = colors.inactive_tab_bg })
+  hi("TabLineFill", { bg = colors.tab_bg })
+  hi("TabLineSel", { fg = colors.light_purple, bg = colors.tab_bg, bold = true })
+  
+  -- Sidebar (File Explorer)
+  hi("NvimTreeNormal", { fg = colors.fg, bg = colors.sidebar_bg })
+  hi("NvimTreeEndOfBuffer", { fg = colors.sidebar_bg, bg = colors.sidebar_bg })
+  hi("NeoTreeNormal", { fg = colors.fg, bg = colors.sidebar_bg })
+  hi("NeoTreeNormalNC", { fg = colors.fg, bg = colors.sidebar_bg })
+  
+  -- Popup Menus
+  hi("Pmenu", { fg = colors.bright_green, bg = colors.menu_bg })
+  hi("PmenuSel", { bg = colors.light_purple })
+  hi("PmenuSbar", { bg = colors.menu_bg })
+  hi("PmenuThumb", { bg = colors.purple })
+  
+  -- Diagnostics
+  hi("DiagnosticError", { fg = colors.error })
+  hi("DiagnosticWarn", { fg = colors.yellow_orange })
+  hi("DiagnosticInfo", { fg = colors.light_blue })
+  hi("DiagnosticHint", { fg = colors.cyan })
+  hi("DiagnosticUnderlineError", { sp = colors.error, undercurl = true })
+  hi("DiagnosticUnderlineWarn", { sp = colors.yellow_orange, undercurl = true })
+  
+  -- Git Signs
+  hi("GitSignsAdd", { fg = colors.bright_green })
+  hi("GitSignsChange", { fg = colors.purple })
+  hi("GitSignsDelete", { fg = colors.red })
+  hi("GitSignsConflict", { fg = colors.error })
+  
+  -- Diff
+  hi("DiffAdd", { fg = colors.bright_green, bg = "NONE" })
+  hi("DiffChange", { fg = colors.purple, bg = "NONE" })
+  hi("DiffDelete", { fg = colors.red, bg = "NONE" })
+  hi("DiffText", { fg = colors.light_blue, bg = "NONE" })
+  
+  -- Syntax Highlighting (fallback for non-TreeSitter)
+  hi("Comment", { fg = colors.comment, italic = true })
+  hi("Constant", { fg = colors.yellow_orange })
+  hi("String", { fg = colors.yellow_orange })
+  hi("Character", { fg = colors.yellow_orange })
+  hi("Number", { fg = colors.yellow_orange })
+  hi("Boolean", { fg = colors.yellow_orange })
+  hi("Float", { fg = colors.yellow_orange })
+  
+  hi("Identifier", { fg = colors.bright_green })
+  hi("Function", { fg = colors.light_purple })
+  
+  hi("Statement", { fg = colors.purple })
+  hi("Conditional", { fg = colors.purple })
+  hi("Repeat", { fg = colors.purple })
+  hi("Label", { fg = colors.purple })
+  hi("Operator", { fg = colors.gray })
+  hi("Keyword", { fg = colors.purple })
+  hi("Exception", { fg = colors.purple })
+  
+  hi("PreProc", { fg = colors.purple })
+  hi("Include", { fg = colors.purple })
+  hi("Define", { fg = colors.purple })
+  hi("Macro", { fg = colors.purple })
+  hi("PreCondit", { fg = colors.purple })
+  
+  hi("Type", { fg = colors.yellow })
+  hi("StorageClass", { fg = colors.purple })
+  hi("Structure", { fg = colors.purple })
+  hi("Typedef", { fg = colors.purple })
+  
+  hi("Special", { fg = colors.cyan })
+  hi("SpecialChar", { fg = colors.cyan })
+  hi("Tag", { fg = colors.bright_green })
+  hi("Delimiter", { fg = colors.gray })
+  hi("SpecialComment", { fg = colors.comment, italic = true })
+  hi("Debug", { fg = colors.red })
+  
+  hi("Underlined", { underline = true })
+  hi("Error", { fg = colors.error })
+  hi("Todo", { fg = colors.yellow_orange, bold = true })
+  
+  -- TreeSitter Highlight Groups
+  -- Literals
+  hi("@string", { fg = colors.yellow_orange })
+  hi("@string.escape", { fg = colors.cyan })
+  hi("@string.regexp", { fg = colors.cyan })
+  hi("@character", { fg = colors.yellow_orange })
+  hi("@number", { fg = colors.yellow_orange })
+  hi("@boolean", { fg = colors.yellow_orange })
+  hi("@float", { fg = colors.yellow_orange })
+  
+  -- Variables
+  hi("@variable", { fg = colors.bright_green })
+  hi("@variable.builtin", { fg = colors.purple, italic = true })
+  hi("@variable.parameter", { fg = colors.yellow_orange })
+  hi("@variable.member", { fg = colors.bright_green })
+  
+  -- Functions
+  hi("@function", { fg = colors.light_purple })
+  hi("@function.builtin", { fg = colors.light_purple })
+  hi("@function.call", { fg = colors.light_purple })
+  hi("@function.macro", { fg = colors.light_purple })
+  hi("@method", { fg = colors.light_purple })
+  hi("@method.call", { fg = colors.light_purple })
+  hi("@constructor", { fg = colors.light_blue })
+  
+  -- Keywords
+  hi("@keyword", { fg = colors.purple })
+  hi("@keyword.function", { fg = colors.purple })
+  hi("@keyword.operator", { fg = colors.purple })
+  hi("@keyword.return", { fg = colors.purple })
+  hi("@keyword.conditional", { fg = colors.purple })
+  hi("@keyword.repeat", { fg = colors.purple })
+  hi("@keyword.import", { fg = colors.purple })
+  hi("@keyword.exception", { fg = colors.purple })
+  
+  -- Operators
+  hi("@operator", { fg = colors.gray })
+  
+  -- Punctuation
+  hi("@punctuation.delimiter", { fg = colors.gray })
+  hi("@punctuation.bracket", { fg = colors.gray })
+  hi("@punctuation.special", { fg = colors.gray })
+  
+  -- Types
+  hi("@type", { fg = colors.yellow })
+  hi("@type.builtin", { fg = colors.yellow })
+  hi("@type.definition", { fg = colors.yellow })
+  hi("@type.qualifier", { fg = colors.purple })
+  
+  -- Classes and Namespaces
+  hi("@namespace", { fg = colors.yellow })
+  hi("@class", { fg = colors.yellow })
+  hi("@struct", { fg = colors.yellow })
+  hi("@enum", { fg = colors.yellow })
+  
+  -- Properties
+  hi("@property", { fg = colors.bright_green })
+  hi("@field", { fg = colors.bright_green })
+  hi("@attribute", { fg = colors.pink })
+  
+  -- Comments and Documentation
+  hi("@comment", { fg = colors.comment, italic = true })
+  hi("@comment.error", { fg = colors.error })
+  hi("@comment.warning", { fg = colors.yellow_orange })
+  hi("@comment.todo", { fg = colors.yellow_orange, bold = true })
+  hi("@comment.note", { fg = colors.light_blue })
+  
+  -- Tags (HTML/JSX)
+  hi("@tag", { fg = colors.bright_green })
+  hi("@tag.attribute", { fg = colors.yellow_orange, italic = true })
+  hi("@tag.delimiter", { fg = colors.gray })
+  
+  -- Markup (Markdown)
+  hi("@markup.heading", { fg = colors.bright_green, bold = true })
+  hi("@markup.strong", { fg = colors.yellow_orange, bold = true })
+  hi("@markup.italic", { fg = colors.red, italic = true })
+  hi("@markup.strikethrough", { strikethrough = true })
+  hi("@markup.underline", { fg = colors.yellow_orange, underline = true })
+  hi("@markup.link", { fg = colors.light_blue })
+  hi("@markup.link.url", { fg = colors.white, underline = true })
+  hi("@markup.quote", { fg = colors.fg, italic = true })
+  hi("@markup.raw", { fg = colors.pink })
+  hi("@markup.list", { fg = colors.bright_green })
+  
+  -- Special
+  hi("@constant", { fg = colors.yellow_orange })
+  hi("@constant.builtin", { fg = colors.yellow_orange })
+  hi("@constant.macro", { fg = colors.yellow_orange })
+  
+  -- LSP Semantic Tokens
+  hi("@lsp.type.class", { fg = colors.yellow })
+  hi("@lsp.type.decorator", { fg = colors.light_blue })
+  hi("@lsp.type.enum", { fg = colors.yellow })
+  hi("@lsp.type.enumMember", { fg = colors.yellow_orange })
+  hi("@lsp.type.function", { fg = colors.light_purple })
+  hi("@lsp.type.interface", { fg = colors.yellow })
+  hi("@lsp.type.macro", { fg = colors.light_purple })
+  hi("@lsp.type.method", { fg = colors.light_purple })
+  hi("@lsp.type.namespace", { fg = colors.yellow })
+  hi("@lsp.type.parameter", { fg = colors.yellow_orange })
+  hi("@lsp.type.property", { fg = colors.bright_green })
+  hi("@lsp.type.struct", { fg = colors.yellow })
+  hi("@lsp.type.type", { fg = colors.yellow })
+  hi("@lsp.type.typeParameter", { fg = colors.yellow })
+  hi("@lsp.type.variable", { fg = colors.bright_green })
+  
+  -- Telescope
+  hi("TelescopeBorder", { fg = colors.purple })
+  hi("TelescopeSelection", { bg = colors.selection })
+  hi("TelescopeSelectionCaret", { fg = colors.bright_green })
+  hi("TelescopeMatching", { fg = colors.orange, bold = true })
+  
+  -- Which-key
+  hi("WhichKey", { fg = colors.light_purple })
+  hi("WhichKeyGroup", { fg = colors.bright_green })
+  hi("WhichKeySeparator", { fg = colors.gray })
+  hi("WhichKeyDesc", { fg = colors.fg })
+  
+  -- Indent Blankline
+  hi("IndentBlanklineChar", { fg = colors.dark_gray })
+  hi("IndentBlanklineContextChar", { fg = colors.purple })
+  
+  -- Dashboard / Alpha
+  hi("DashboardHeader", { fg = colors.purple })
+  hi("DashboardCenter", { fg = colors.bright_green })
+  -- hi("DashboardShortCut", { fg = colors.yellow_orange })
+  hi("DashboardShortCut", { fg = colors.purple })
+  hi("DashboardFooter", { fg = colors.light_purple, italic = true })
+
+  -- Alpha-nvim
+  hi("AlphaHeader", { fg = colors.purple })
+  -- hi("AlphaButtons", { fg = colors.bright_green })  -- icons and text
+  hi("AlphaButtons", { fg = colors.yellow_orange })
+  hi("AlphaShortcut", { fg = colors.yellow_orange })  -- the "SPC ee", "SPC ff" parts
+  hi("AlphaFooter", { fg = colors.light_purple, italic = true }) 
+end
+
+return M

@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lua/ben/plugins/alpha.lua
+
 return {
   "goolord/alpha-nvim",
   event = "VimEnter", 

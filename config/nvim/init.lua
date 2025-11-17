@@ -13,3 +13,9 @@ require("ben.lazy")
 -- set termguicolors   " Enable true color support
 
 require('options')
+
+
+vim.cmd.colorscheme("tokyonight")
+------------------------------------------------------
+
+-- vim.cmd.colorscheme("spooky-scary")

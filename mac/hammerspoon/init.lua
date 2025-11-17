@@ -41,3 +41,4 @@ hs.hotkey.bind({"cmd", "shift"}, "w", function()
     ]])
   end
 end)
+
