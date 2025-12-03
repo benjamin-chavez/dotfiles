@@ -1,5 +1,23 @@
 -- init.lua
 
+local hyper = {"ctrl", "alt", "cmd", "shift"}
+
+-- hs.hotkey.bind(hyper, "t", function()
+--   hs.application.launchOrFocus("Ghostty")
+-- end)
+
+hs.hotkey.bind(hyper, "p", function()
+  hs.application.launchOrFocus("PyCharm")
+end)
+
+hs.hotkey.bind(hyper, "c", function()
+  hs.application.launchOrFocus("Google Chrome")
+end)
+
+hs.hotkey.bind(hyper, "o", function()
+  hs.application.launchOrFocus("Postman")
+end)
+
 -- Brings the Ghostty app into focus or launches it if not running
 hs.hotkey.bind({"cmd", "alt"}, "t", function()
   local script = [[

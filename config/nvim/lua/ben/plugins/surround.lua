@@ -1,0 +1,10 @@
+return {
+  "kylechui/nvim-surround",
+  event = { "BufReadPre", "BufNewFile" },
+  version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    
+  -- Usage: ys{motion}{char} to surround
+  -- Example: ysiw" -> surround inner word with "quotes"
+  --          ysa") -> surround around parens with "quotes"
+  config = true,
+}
