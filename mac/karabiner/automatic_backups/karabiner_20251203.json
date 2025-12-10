@@ -24,28 +24,16 @@
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 3616,
-                        "vendor_id": 13364
-                    },
-                    "ignore": false,
-                    "ignore_vendor_events": true
-                }
-            ],
             "name": "Default",
             "selected": true,
             "simple_modifications": [
                 {
-                  "from": { "key_code": "left_control" },
-                  "to": [{ "key_code": "left_command" }]
+                    "from": { "key_code": "left_command" },
+                    "to": [{ "key_code": "left_control" }]
                 },
                 {
-                  "from": { "key_code": "left_command" },
-                  "to": [{ "key_code": "left_control" }]
+                    "from": { "key_code": "left_control" },
+                    "to": [{ "key_code": "left_command" }]
                 }
             ],
             "virtual_hid_keyboard": {

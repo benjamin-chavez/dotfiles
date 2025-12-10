@@ -2,9 +2,9 @@
 
 local hyper = {"ctrl", "alt", "cmd", "shift"}
 
--- hs.hotkey.bind(hyper, "t", function()
---   hs.application.launchOrFocus("Ghostty")
--- end)
+hs.hotkey.bind(hyper, "t", function()
+  hs.application.launchOrFocus("Ghostty")
+end)
 
 hs.hotkey.bind(hyper, "p", function()
   hs.application.launchOrFocus("PyCharm")
@@ -16,6 +16,18 @@ end)
 
 hs.hotkey.bind(hyper, "o", function()
   hs.application.launchOrFocus("Postman")
+end)
+
+hs.hotkey.bind(hyper, "s", function()
+  hs.application.launchOrFocus("Rambox")
+end)
+
+hs.hotkey.bind(hyper, "r", function()
+  hs.reload()
+end)
+
+hs.hotkey.bind(hyper, "e", function()
+  he.application.launchOrFocus("Excel")
 end)
 
 -- Brings the Ghostty app into focus or launches it if not running

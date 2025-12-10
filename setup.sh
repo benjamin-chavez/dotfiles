@@ -55,6 +55,9 @@ link_dir ~/.dotfiles/config/ghostty ~/.config/ghostty
 if [ "$OS" = "Darwin" ]; then
   echo "Applying macOS specific settings..."
 
+  echo "🍺 Installing Homebrew packages..."
+  brew bundle --file=~/.dotfiles/mac/Brewfile
+
   ln -sf ~/.dotfiles/mac/hammerspoon/init.lua ~/.hammerspoon/init.lua
   ln -sf ~/.dotfiles/mac/.zshrc ~/.zshrc
 

@@ -1,0 +1,7 @@
+
+# ~/.dotfiles/mac/Brewfile
+
+# CLI Tools:
+brew "bat"
+brew "duf"
+brew "thefuck"
