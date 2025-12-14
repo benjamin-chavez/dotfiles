@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 # .dotfiles/setup.sh
@@ -29,7 +28,6 @@ link_dir() {
   ln -sf "$src" "$dest"
   echo "✓ Linked $dest → $src"
 }
-
 
 # Create symbolic links
 # MAC Specific Symlinks
