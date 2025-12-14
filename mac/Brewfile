@@ -2,6 +2,7 @@
 # ~/.dotfiles/mac/Brewfile
 
 brew git
+brew gh
 brew neovim
 brew ripgrep
 
