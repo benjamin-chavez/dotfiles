@@ -1,7 +1,13 @@
 
 # ~/.dotfiles/mac/Brewfile
 
+brew git
+brew neovim
+brew ripgrep
+
 # CLI Tools:
-brew "bat"
-brew "duf"
-brew "thefuck"
+# brew bat
+brew duf
+brew thefuck
+
+cask raycast
