@@ -1,16 +1,24 @@
 
 # ~/.dotfiles/mac/Brewfile
 
-brew git
-brew gh
-brew neovim
-brew ripgrep
+brew "git"
+brew "gh"
+brew "fnm"
+brew "neovim"
+brew "ripgrep"
+brew "jq"
+
+# Build dependencies
+brew "pkg-config" # pgenv build dependency
+brew "icu4c"  # pgenv build dependency
 
 # CLI Tools:
-# brew bat
-brew duf
-brew thefuck
+# brew "bat"
+brew "duf"
+brew "thefuck"
 
-cask raycast
-cask ghostty
-cask visual-studio-code
+cask "raycast"
+cask "ghostty"
+cask "visual-studio-code"
+cask "jetbrains-toolbox"
+cask "docker"

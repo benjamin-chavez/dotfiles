@@ -50,6 +50,10 @@ ln -sf ~/.dotfiles/scripts/open_veracity_team_zoom.sh ~/open_veracity_team_zoom.
 link_dir ~/.dotfiles/config/nvim ~/.config/nvim
 link_dir ~/.dotfiles/config/ghostty ~/.config/ghostty
 
+if [ ! -d ~/.pgenv ]; then
+  git clone https://github.com/theory/pgenv.git ~/.pgenv
+fi
+
 if [ "$OS" = "Darwin" ]; then
   echo "Applying macOS specific settings..."
 
