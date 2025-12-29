@@ -1,0 +1,28 @@
+# ~/.dotfiles/mac/.zshrc.work
+
+# Work-specific configuration (Azure, .NET, Java)
+
+# ====================
+# Java
+# ====================
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# ====================
+# .NET
+# ====================
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet@8/libexec"
+export PATH="/opt/homebrew/opt/dotnet@8/bin:$PATH"
+export PATH="$HOME/.dotnet:$PATH"
+
+# ====================
+# Poetry (Already in path) - ~/.local/bin/, which is already in your PATH in the main .zshrc
+# ====================
+# export PATH="$HOME/.local/bin:$PATH"
+
+
+# ====================
+# UV (Python package manager)
+# ====================
+# . "$HOME/.local/bin/env"
+# eval "$(uv generate-shell-completion zsh)"

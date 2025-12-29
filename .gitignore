@@ -1,0 +1,22 @@
+# Secrets (ignore actual file, keep example)
+.secrets
+!.secrets.example
+
+# macOS
+.DS_Store
+._*
+
+# Backups
+*.backup
+*.bak
+*~
+
+# Editor temp files
+*.swp
+*.swo
+
+# Neovim
+config/nvim/lazy-lock.json
+
+# Karabiner auto-backups
+mac/karabiner/automatic_backups/
