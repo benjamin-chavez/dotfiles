@@ -1,0 +1,41 @@
+#############################################################
+# ~/.dotfiles/mac/Brewfile.work                             #
+#                                                           #
+# Work-specific packages (Azure, .NET, SQL Server, etc.)    #
+# Usage: $ brew bundle --file ~/.dotfiles/mac/Brewfile.work #
+#############################################################
+
+# Taps
+tap "azure/functions"
+tap "homebrew/cask-fonts"
+tap "localstack/tap"
+tap "microsoft/mssql-release"
+
+# .NET
+brew "dotnet@8"           # .NET 8 runtime
+
+# Azure
+brew "azure-cli"                                    # Azure CLI
+brew "azure/functions/azure-functions-core-tools@4" # Azure Functions local dev
+
+# AWS (local)
+brew "localstack/tap/localstack-cli"  # Local AWS emulator
+
+# SQL Server
+brew "microsoft/mssql-release/msodbcsql18"  # SQL Server ODBC driver
+brew "microsoft/mssql-release/mssql-tools"  # SQL Server CLI (sqlcmd, bcp)
+
+# Languages & Runtimes
+brew "python@3.11"        # Python 3.11
+brew "yarn"               # JavaScript package manager
+
+# Java
+cask "temurin@17"         # Eclipse Temurin JDK 17
+
+# Shell
+cask "powershell"         # PowerShell for macOS
+
+# Fonts
+cask "font-meslo-lg-nerd-font"  # Nerd Font for terminal/editor
+cask "font-sf-pro"              # Apple San Francisco font
+cask "sf-symbols"               # Apple SF Symbols app

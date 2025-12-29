@@ -15,13 +15,18 @@ brew "neovim"       # Vim fork, modernized text editor
 # CLI Tools
 brew "bat"          # Syntax highlighting (better cat)
 brew "duf"          # Disk usage stats (better df)
+brew "jq"           # JSON processor
 brew "ripgrep"      # Fast text search (better grep)
 brew "thefuck"      # Auto-correct previous command
+brew "tmux"         # Terminal multiplexer
+brew "tree"         # Directory listing as a file-tree
+brew "zoxide"       # Smarter cd command
 
 # Languages
 brew "go"           # Go programming language
 
 # Apps
-cask "ghostty"      # GPU-accelerated terminal emulator
-cask "raycast"      # Launcher and productivity tool
+cask "ghostty"             # GPU-accelerated terminal emulator
+cask "hammerspoon"         # macOS automation scripting
+cask "raycast"             # Launcher and productivity tool
 cask "visual-studio-code"  # Code editor
