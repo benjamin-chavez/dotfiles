@@ -5,3 +5,4 @@
 brew "bat"
 brew "duf"
 brew "thefuck"
+brew "go"
