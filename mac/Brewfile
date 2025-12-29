@@ -22,11 +22,18 @@ brew "tmux"         # Terminal multiplexer
 brew "tree"         # Directory listing as a file-tree
 brew "zoxide"       # Smarter cd command
 
-# Languages
+# Languages & Runtimes
+brew "fnm"          # Fast Node Manager (better nvm)
 brew "go"           # Go programming language
 
+# Build Dependencies
+brew "icu4c"        # Unicode library (pgenv dependency)
+brew "pkg-config"   # Compiler helper for building software
+
 # Apps
+cask "docker"              # Docker Desktop
 cask "ghostty"             # GPU-accelerated terminal emulator
 cask "hammerspoon"         # macOS automation scripting
+cask "jetbrains-toolbox"   # JetBrains IDE manager
 cask "raycast"             # Launcher and productivity tool
 cask "visual-studio-code"  # Code editor
