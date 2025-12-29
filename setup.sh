@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 # .dotfiles/setup.sh
@@ -30,7 +29,6 @@ link_dir() {
   echo "✓ Linked $dest → $src"
 }
 
-
 # Create symbolic links
 # MAC Specific Symlinks
 mkdir -p ~/.hammerspoon
@@ -54,6 +52,22 @@ link_dir ~/.dotfiles/config/ghostty ~/.config/ghostty
 
 if [ "$OS" = "Darwin" ]; then
   echo "Applying macOS specific settings..."
+
+  # Install Xcode CLT
+  if ! xcode-select -p &>/dev/null; then
+    xcode-select --install
+    until xcode-select -p &>/dev/null; do
+      sleep 5
+    done
+  fi
+
+  # Install Homebrow
+  if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  # Make brew available in this session (needed on Apple Silicon)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   echo "🍺 Installing Homebrew packages..."
   brew bundle --file=~/.dotfiles/mac/Brewfile
