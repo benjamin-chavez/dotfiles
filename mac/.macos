@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 
 # .dotfiles/mac/.macos
@@ -5,13 +6,43 @@
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
+
 # Hide AWS VPN Client from Dock
 defaults write com.amazonaws.vpnclient LSUIElement -bool true
 
-# Don’t automatically rearrange Spaces based on most recent use
+# Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
+
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
+
+
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Show path bar at bottom of Finder windows
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Show status bar at bottom of Finder windows
+defaults write com.apple.finder ShowStatusBar -bool true
+
+
+
+###############################################################################
+# Script/Run Command - Restart affected applications                          #
+###############################################################################
+
+for app in "Dock" "Finder"; do
+    killall "${app}" &> /dev/null
+done

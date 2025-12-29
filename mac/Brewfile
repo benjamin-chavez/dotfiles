@@ -1,16 +1,27 @@
+#############################################################
+# ~/.dotfiles/mac/Brewfile                                  #
+#                                                           #
+# List of packages to be installed / updated via Homebrew   #
+# Usage: $ brew bundle --file ~/.dotfiles/mac/Brewfile      #
+#############################################################
 
-# ~/.dotfiles/mac/Brewfile
+# Version Control
+brew "git"          # Version control system
+brew "gh"           # GitHub CLI for PRs, issues, etc.
 
-brew git
-brew gh
-brew neovim
-brew ripgrep
+# Editors
+brew "neovim"       # Vim fork, modernized text editor
 
-# CLI Tools:
-# brew bat
-brew duf
-brew thefuck
+# CLI Tools
+brew "bat"          # Syntax highlighting (better cat)
+brew "duf"          # Disk usage stats (better df)
+brew "ripgrep"      # Fast text search (better grep)
+brew "thefuck"      # Auto-correct previous command
 
-cask raycast
-cask ghostty
-cask visual-studio-code
+# Languages
+brew "go"           # Go programming language
+
+# Apps
+cask "ghostty"      # GPU-accelerated terminal emulator
+cask "raycast"      # Launcher and productivity tool
+cask "visual-studio-code"  # Code editor
