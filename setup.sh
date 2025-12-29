@@ -61,7 +61,7 @@ if [ "$OS" = "Darwin" ]; then
     done
   fi
 
-  # Install Homebrow
+  # Install Homebrew
   if ! command -v brew &>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
@@ -83,35 +83,40 @@ if [ "$OS" = "Darwin" ]; then
   echo "macOS settings applied. Some changes may require a logout/restart to take effect."
 fi
 
-
-
-# Create symlink for Node.js to ensure it's available system-wide
-if [ -d "$HOME/.nvm/versions/node" ]; then
-  # Get the current NVM version (or default to a specific version if needed)
-  NODE_VERSION=$(ls -t $HOME/.nvm/versions/node | head -n 1)
-  NODE_PATH="$HOME/.nvm/versions/node/$NODE_VERSION/bin/node"
-
-  # Check if the symlink already exists
-  if [ ! -e "/usr/local/bin/node" ] || [ -L "/usr/local/bin/node" ]; then
-    echo "Creating symlink for Node.js ($NODE_VERSION) to /usr/local/bin/node"
-
-    # Single sudo block to avoid multiple password prompts
-    sudo bash -c "
-      # Create directory if it doesn't exist
-      mkdir -p /usr/local/bin
-      # Remove existing symlinks if they exist
-      rm -f /usr/local/bin/node /usr/local/bin/npm /usr/local/bin/npx
-      # Create new symlinks for node, npm, and npx
-      ln -sf '$NODE_PATH' /usr/local/bin/node
-      ln -sf '$HOME/.nvm/versions/node/$NODE_VERSION/bin/npm' /usr/local/bin/npm
-      ln -sf '$HOME/.nvm/versions/node/$NODE_VERSION/bin/npx' /usr/local/bin/npx
-    "
-  fi
+# Install pgenv (PostgreSQL version manager)
+if [ ! -d ~/.pgenv ]; then
+  echo "📦 Installing pgenv..."
+  git clone https://github.com/theory/pgenv.git ~/.pgenv
+  echo "✓ pgenv installed"
 else
-  echo "NVM installation not found. Skipping Node.js symlink."
+  echo "✓ pgenv already installed"
 fi
 
+# # Create symlink for Node.js to ensure it's available system-wide
+# # NOTE: Commented out — using fnm instead of nvm now
+# if [ -d "$HOME/.nvm/versions/node" ]; then
+#   # Get the current NVM version (or default to a specific version if needed)
+#   NODE_VERSION=$(ls -t $HOME/.nvm/versions/node | head -n 1)
+#   NODE_PATH="$HOME/.nvm/versions/node/$NODE_VERSION/bin/node"
+#
+#   # Check if the symlink already exists
+#   if [ ! -e "/usr/local/bin/node" ] || [ -L "/usr/local/bin/node" ]; then
+#     echo "Creating symlink for Node.js ($NODE_VERSION) to /usr/local/bin/node"
+#
+#     # Single sudo block to avoid multiple password prompts
+#     sudo bash -c "
+#       # Create directory if it doesn't exist
+#       mkdir -p /usr/local/bin
+#       # Remove existing symlinks if they exist
+#       rm -f /usr/local/bin/node /usr/local/bin/npm /usr/local/bin/npx
+#       # Create new symlinks for node, npm, and npx
+#       ln -sf '$NODE_PATH' /usr/local/bin/node
+#       ln -sf '$HOME/.nvm/versions/node/$NODE_VERSION/bin/npm' /usr/local/bin/npm
+#       ln -sf '$HOME/.nvm/versions/node/$NODE_VERSION/bin/npx' /usr/local/bin/npx
+#     "
+#   fi
+# else
+#   echo "NVM installation not found. Skipping Node.js symlink."
+# fi
 
 echo "Dotfiles have been symlinked to home directory."
-
-
