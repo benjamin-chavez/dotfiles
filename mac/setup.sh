@@ -1,86 +1,70 @@
 #!/usr/bin/env bash
 
-# .dotfiles/setup.sh
+# ~/.dotfiles/mac/setup.sh
 
-OS="$(uname -s)"
+echo "Setting up dotfiles on macOS..."
 
-echo "Setting up dotfiles on $OS system..."
-
-
+source "$(dirname "$0")/../lib/utils.sh"
 
 # ====================
-# Common Symlinks (all platforms)
+# Xcode CLT
+# ====================
+if ! xcode-select -p &>/dev/null; then
+  echo "📦 Installing Xcode Command Line Tools..."
+  xcode-select --install
+  until xcode-select -p &>/dev/null; do
+    sleep 5
+  done
+fi
+
+# ====================
+# Homebrew
+# ====================
+if ! command -v brew &>/dev/null; then
+  echo "🍺 Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Make brew available in this session (needed on Apple Silicon)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+echo "🍺 Installing Homebrew packages..."
+brew bundle --file=~/.dotfiles/mac/Brewfile
+
+# ====================
+# Symlinks
 # ====================
 mkdir -p ~/.config
+mkdir -p ~/.hammerspoon
 
 ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.aliases ~/.aliases
 ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/.dotfiles/scripts/aws-sso-login-script.sh ~/aws-sso-login-script.sh
-ln -sf ~/.dotfiles/scripts/open_veracity_team_zoom.sh ~/open_veracity_team_zoom.sh
+ln -sf ~/.dotfiles/mac/hammerspoon/init.lua ~/.hammerspoon/init.lua
 
 # Directory symlinks
 link_dir ~/.dotfiles/config/nvim ~/.config/nvim
 link_dir ~/.dotfiles/config/ghostty ~/.config/ghostty
+link_dir ~/.dotfiles/mac/karabiner ~/.config/karabiner
 
 # ====================
-# macOS
+# pgenv (PostgreSQL version manager)
 # ====================
-if [ "$OS" = "Darwin" ]; then
-  echo "Applying macOS specific settings..."
-
-  # Install Xcode CLT
-  if ! xcode-select -p &>/dev/null; then
-    xcode-select --install
-    until xcode-select -p &>/dev/null; do
-      sleep 5
-    done
-  fi
-
-  # Install Homebrew
-  if ! command -v brew &>/dev/null; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-
-  # Make brew available in this session (needed on Apple Silicon)
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  echo "🍺 Installing Homebrew packages..."
-  brew bundle --file=~/.dotfiles/mac/Brewfile
-
-  # Hammerspoon
-  mkdir -p ~/.hammerspoon
-  ln -sf ~/.dotfiles/mac/hammerspoon/init.lua ~/.hammerspoon/init.lua
-
-  # Karabiner
-  link_dir ~/.dotfiles/mac/karabiner ~/.config/karabiner
-
-  # macOS defaults
-  chmod +x ~/.dotfiles/mac/.macos
-  ~/.dotfiles/mac/.macos
-
-  echo "macOS settings applied. Some changes may require a logout/restart to take effect."
-fi
-
-# ====================
-# Linux
-# ====================
-if [ "$OS" = "Linux" ]; then
-  echo "Applying Linux specific settings..."
-  # Add Linux-specific setup here (e.g., apt packages, etc.)
-fi
-
-# ====================
-# Common Setup (all platforms)
-# ====================
-
-# Install pgenv (PostgreSQL version manager)
 if [ ! -d ~/.pgenv ]; then
   echo "📦 Installing pgenv..."
   git clone https://github.com/theory/pgenv.git ~/.pgenv
   echo "✓ pgenv installed"
 else
   echo "✓ pgenv already installed"
+fi
+
+# ====================
+# macOS Defaults
+# ====================
+if [ -f ~/.dotfiles/mac/.macos ]; then
+  echo "⚙️ Applying macOS defaults..."
+  chmod +x ~/.dotfiles/mac/.macos
+  ~/.dotfiles/mac/.macos
 fi
 
 # # Create symlink for Node.js to ensure it's available system-wide
@@ -110,4 +94,27 @@ fi
 #   echo "NVM installation not found. Skipping Node.js symlink."
 # fi
 
+# ====================
+# Work Setup
+# ====================
+run_work_setup() {
+  echo "💼 Running work setup..."
+  # source "$(dirname "$0")/setup-work.sh"
+  ln -sf ~/.dotfiles/scripts/aws-sso-login-script.sh ~/aws-sso-login-script.sh
+  ln -sf ~/.dotfiles/scripts/open_veracity_team_zoom.sh ~/open_veracity_team_zoom.sh
+}
+
+if [[ "$1" == "--work" ]]; then
+  run_work_setup
+else
+  read -p "Is this a work machine? (y/n) " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    run_work_setup
+  fi
+fi
+
+
 echo "Dotfiles have been symlinked to home directory."
+# echo "macOS settings applied. Some changes may require a logout/restart to take effect."
+echo $'\uf179 macOS setup complete. Some changes may require a logout/restart.'
