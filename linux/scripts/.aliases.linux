@@ -1,0 +1,2 @@
+alias mouse='./mousewheel.sh'
+alias zsh_history_fix='./.shfiles/zsh_history_fix.sh'
