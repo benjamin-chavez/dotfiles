@@ -15,6 +15,7 @@ brew "neovim"       # Vim fork, modernized text editor
 # CLI Tools
 brew "bat"          # Syntax highlighting (better cat)
 brew "duf"          # Disk usage stats (better df)
+brew "fd"           # Fast file finder (better find)
 brew "jq"           # JSON processor
 brew "ripgrep"      # Fast text search (better grep)
 brew "thefuck"      # Auto-correct previous command
