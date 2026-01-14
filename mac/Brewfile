@@ -24,7 +24,7 @@ brew "zoxide"       # Smarter cd command
 
 # Languages & Runtimes
 brew "fnm"          # Fast Node Manager (better nvm)
-brew "go"           # Go programming language
+# brew "go"           # Go programming language
 
 # Build Dependencies
 brew "icu4c"        # Unicode library (pgenv dependency)
@@ -37,3 +37,7 @@ cask "hammerspoon"         # macOS automation scripting
 cask "jetbrains-toolbox"   # JetBrains IDE manager
 cask "raycast"             # Launcher and productivity tool
 cask "visual-studio-code"  # Code editor
+
+
+# brew bundle cleanup --file=~/path/to/Brewfile       # Shows what would be removed
+#@brew bundle cleanup --file=~/path/to/Brewfile --force  # Actually removes them

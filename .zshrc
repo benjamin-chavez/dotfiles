@@ -20,6 +20,12 @@ RPROMPT=''
 unalias rm 2>/dev/null  # Disable interactive rm from common-aliases plugin
 
 # ====================
+# Zsh Completions
+# ====================
+fpath+=~/.zfunc                   # Add custom completions directory to function path
+autoload -Uz compinit && compinit # Load and initialize the completion system
+
+# ====================
 # Environment
 # ====================
 export LANG=en_US.UTF-8
@@ -91,7 +97,6 @@ load-nvmrc() {
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
-# export PATH="$HOME/go/bin:$PATH"  # Go-installed binaries (go install)
 
 # ====================
 # Ruby (uncomment if needed)
@@ -110,8 +115,7 @@ export PGDATABASE=postgres
 # ====================
 # AWS
 # ====================
-# I don't know what this is for
-# export AWS_PAGER=""
+export AWS_PAGER=""  # Disable paging for AWS CLI output (no more `less` for long results)
 
 # ====================
 # CLI Tools
@@ -155,7 +159,7 @@ _macos() {
   export PATH="$PNPM_HOME:$PATH"
 
   # Golang (Homebrew)
-#  export PATH="/opt/homebrew/opt/go/bin:$PATH"  # Go compiler (Homebrew)
+  # export PATH="/opt/homebrew/opt/go/bin:$PATH"  # Go compiler (Homebrew)
 
   # Additional Configs
   [[ -f "$HOME/.zshrc.work" ]] && source "$HOME/.zshrc.work"
@@ -188,12 +192,10 @@ _linux() {
   export PNPM_HOME="$HOME/.local/share/pnpm"
   export PATH="$PNPM_HOME:$PATH"
 
-  ## Golang (Linux paths)
-  #export GOROOT=/usr/local/go
-  #export PATH="$GOROOT/bin:$PATH"
+  # Terraform (tfenv)
+  export PATH="$HOME/.tfenv/bin:$PATH"
 
   # AWS CLI completion
-  export PATH="/usr/local/bin/aws_completer:$PATH"
   autoload bashcompinit && bashcompinit
   complete -C '/usr/local/bin/aws_completer' aws
 
