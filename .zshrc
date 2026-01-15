@@ -94,9 +94,8 @@ load-nvmrc() {
 # ====================
 # Golang
 # ====================
-export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # ====================
 # Ruby (uncomment if needed)
@@ -176,6 +175,10 @@ _linux() {
   export PATH="${HOME}/.rbenv/bin:${PATH}"
   type -a rbenv >/dev/null && eval "$(rbenv init -)"
   export BUNDLER_EDITOR=code
+
+  # Golang
+  export GOROOT=/usr/local/go
+  export PATH="$GOROOT/bin:$PATH"
 
   # Python - pyenv path (Linux-specific location)
   export PATH="$HOME/.pyenv/bin:$PATH"

@@ -25,7 +25,7 @@ brew "zoxide"       # Smarter cd command
 
 # Languages & Runtimes
 brew "fnm"          # Fast Node Manager (better nvm)
-# brew "go"           # Go programming language
+brew "go"           # Go programming language
 
 # Build Dependencies
 brew "icu4c"        # Unicode library (pgenv dependency)
