@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# .dotfiles/.aliases
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Shortcuts
+alias c="cd ~/Code"
+alias d="cd ~/Documents"
+# alias d="cd ~/Documents/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd ~/projects"
+alias g="git"
+alias m="cd ~/Code/mario"
+alias thwomp="cd ~/Code/thwomp"
+alias dotfiles="cd ~/.dotfiles"
+alias pycharm="open -a Pycharm ."
+alias idea="open -na 'IntelliJ IDEA.app' --args ."
+
+# Get External IP / Internet Speed
+alias myip="curl https://ipinfo.io/json" # or /ip for plain-text ip
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
+
+# Ruby on Rails Commands:
+alias be="bundle exec"
+
+# Quickly serve the current directory as HTTP
+alias serve='ruby -run -e httpd . -p 8000' # Or python -m SimpleHTTPServer :)
+alias up='cd ..'
+alias mouse='./mousewheel.sh'
+alias zsh_history_fix='./.shfiles/zsh_history_fix.sh'
+alias dplinux='ssh chaben@zhuang.cdm.depaul.edu'
+alias systemsii='ssh bchavez4_@mc.cdm.depaul.edu'
+alias dpu='cd /media/sf_Windows_benmc/OneDrive/Documents/Graduate\ School/DePaul\ CDM/2021\ -\ 2022\ Academic\ Year/Fall\ Quarter\ 2021'
+
+# VERACITY:
+alias aws_sso='bash ~/aws-sso-login-script.sh'
+alias aws_dev='bash ~/aws-sso-login-script.sh --sso-session dev'
+# alias azurite="load_nvm && azurite"
+alias azurite="azurite"
+alias zmz="~/open_veracity_team_zoom.sh"
+
+alias vim="nvim"
+alias cat="bat --paging=never"
+alias cat_og="command cat"
+alias df="duf"
+alias df_og="command df"
+
+alias src='source ~/.zshrc'
+alias zshrc='nvim ~/.zshrc'
+alias ezsh='exec zsh'
+
+

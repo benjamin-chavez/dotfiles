@@ -4,7 +4,7 @@
 
 echo "Setting up dotfiles on macOS..."
 
-source "$(dirname "$0")/../lib/utils.sh"
+source ~/.dotfiles/lib/utils.sh
 
 # ====================
 # Xcode CLT
@@ -100,6 +100,7 @@ fi
 run_work_setup() {
   echo "💼 Running work setup..."
   # source "$(dirname "$0")/setup-work.sh"
+  brew bundle --file=~/.dotfiles/mac/Brewfile.work
   ln -sf ~/.dotfiles/scripts/aws-sso-login-script.sh ~/aws-sso-login-script.sh
   ln -sf ~/.dotfiles/scripts/open_veracity_team_zoom.sh ~/open_veracity_team_zoom.sh
 }

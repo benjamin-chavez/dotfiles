@@ -13,7 +13,7 @@ link_dir() {
     return
   fi
 
-  # Exists as a real directory — backup
+  # If it is a directory and not a symlink, then save a backup
   if [ -d "$dest" ] && [ ! -L "$dest" ]; then
     mv "$dest" "$dest.backup.$(date +%Y%m%d%H%M%S)"
     echo "⚠ Backed up existing $dest"
