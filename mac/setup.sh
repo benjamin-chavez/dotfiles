@@ -45,7 +45,7 @@ ln -sf ~/.dotfiles/mac/hammerspoon/init.lua ~/.hammerspoon/init.lua
 # Directory symlinks
 link_dir ~/.dotfiles/config/nvim ~/.config/nvim
 link_dir ~/.dotfiles/config/ghostty ~/.config/ghostty
-link_dir ~/.dotfiles/mac/karabiner ~/.config/karabiner
+#link_dir ~/.dotfiles/mac/karabiner ~/.config/karabiner
 
 # ====================
 # pgenv (PostgreSQL version manager)

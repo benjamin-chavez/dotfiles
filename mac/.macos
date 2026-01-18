@@ -7,9 +7,6 @@
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# Hide AWS VPN Client from Dock
-defaults write com.amazonaws.vpnclient LSUIElement -bool true
-
 # Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
@@ -19,7 +16,8 @@ defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 
-
+# Don't show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
 
 ###############################################################################
 # Finder                                                                      #

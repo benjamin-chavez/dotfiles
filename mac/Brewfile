@@ -14,6 +14,7 @@ brew "neovim"       # Vim fork, modernized text editor
 
 # CLI Tools
 brew "bat"          # Syntax highlighting (better cat)
+brew "direnv"       # Auto-load env vars per directory (.envrc)
 brew "duf"          # Disk usage stats (better df)
 brew "fd"           # Fast file finder (better find)
 brew "jq"           # JSON processor
@@ -35,8 +36,8 @@ brew "pkg-config"   # Compiler helper for building software
 # cask "docker"              # Docker Desktop
 cask "ghostty"             # GPU-accelerated terminal emulator
 cask "hammerspoon"         # macOS automation scripting
-cask "jetbrains-toolbox"   # JetBrains IDE manager
-cask "raycast"             # Launcher and productivity tool
+# cask "jetbrains-toolbox"   # JetBrains IDE manager
+# cask "raycast"             # Launcher and productivity tool
 cask "visual-studio-code"  # Code editor
 
 

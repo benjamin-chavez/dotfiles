@@ -7,13 +7,20 @@ zmodload zsh/datetime
 start_time=$EPOCHREALTIME
 
 # ====================
+# Homebrew (Mac only - must be early - other tools depend on it)
+# ====================
+[[ "$OSTYPE" == darwin* ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# ====================
 # Oh-My-Zsh Configuration
 # ====================
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 ZSH_DISABLE_COMPFIX=true # Disable warning about insecure completion-dependent directories
 
-plugins=(git gitfast last-working-dir common-aliases history-substring-search history)
+
+# plugins=(git gitfast last-working-dir common-aliases history-substring-search history)
+plugins=(git gitfast last-working-dir history-substring-search history)
 
 source "${ZSH}/oh-my-zsh.sh"
 RPROMPT=''
@@ -119,7 +126,7 @@ export AWS_PAGER=""  # Disable paging for AWS CLI output (no more `less` for lon
 # ====================
 # CLI Tools
 # ====================
-eval "$(thefuck --alias)" && alias fk="fuck"
+# eval "$(thefuck --alias)" && alias fk="fuck"
 eval "$(zoxide init zsh)" && alias cd="z"  # Zoxide (better cd)
 eval "$(direnv hook zsh)"
 # PATH="$HOME/.console-ninja/.bin:$PATH"
@@ -143,12 +150,9 @@ unalias gk gke 2>/dev/null  # Remove gitk GUI aliases from git plugin (unused)
 # macOS
 # ====================
 _macos() {
-  # Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-
   # Oh-My-Zsh Configuration
   # PROMPT=$'\uf8ff %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'  # Original (Apple logo)
-  PROMPT=$'\uf179 %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'    # Apple logo + directory + git
+  # PROMPT=$'\uf179 %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'    # Apple logo + directory + git
 
   # Node.js (fnm)
   eval "$(fnm env --use-on-cd)"

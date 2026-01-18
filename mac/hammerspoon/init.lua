@@ -18,9 +18,9 @@ hs.hotkey.bind(hyper, "o", function()
   hs.application.launchOrFocus("Postman")
 end)
 
-hs.hotkey.bind(hyper, "s", function()
-  hs.application.launchOrFocus("Rambox")
-end)
+-- hs.hotkey.bind(hyper, "s", function()
+--   hs.application.launchOrFocus("Rambox")
+-- end)
 
 hs.hotkey.bind(hyper, "r", function()
   hs.reload()
