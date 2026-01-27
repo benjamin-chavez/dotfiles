@@ -9,7 +9,7 @@
 tap "azure/functions"
 tap "homebrew/cask-fonts"
 tap "localstack/tap"
-tap "microsoft/mssql-release"
+# tap "microsoft/mssql-release"
 
 # .NET
 brew "dotnet@8"           # .NET 8 runtime
@@ -22,8 +22,8 @@ brew "azure/functions/azure-functions-core-tools@4" # Azure Functions local dev
 brew "localstack/tap/localstack-cli"  # Local AWS emulator
 
 # SQL Server
-brew "microsoft/mssql-release/msodbcsql18"  # SQL Server ODBC driver
-brew "microsoft/mssql-release/mssql-tools"  # SQL Server CLI (sqlcmd, bcp)
+# brew "microsoft/mssql-release/msodbcsql18"  # SQL Server ODBC driver
+# brew "microsoft/mssql-release/mssql-tools"  # SQL Server CLI (sqlcmd, bcp)
 
 # Languages & Runtimes
 brew "python@3.11"        # Python 3.11

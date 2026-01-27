@@ -207,7 +207,6 @@ _linux() {
   complete -C '/usr/local/bin/aws_completer' aws
 
   # Claude CLI
-  alias claude="$HOME/.claude/local/claude"
 }
 
 # ====================
