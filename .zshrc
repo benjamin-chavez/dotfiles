@@ -43,6 +43,7 @@ export EDITOR="nvim"
 # ====================
 export PATH="$HOME/bin:$HOME/bin/bash_scripts:$PATH" # Personal bin directory
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.dotfiles/scripts:$PATH"
 # export PATH="./bin:./node_modules/.bin:$PATH"  # Local binstubs (rails, node_modules)
 
 # ====================
