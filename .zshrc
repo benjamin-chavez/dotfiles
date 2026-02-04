@@ -7,6 +7,11 @@ zmodload zsh/datetime
 start_time=$EPOCHREALTIME
 
 # ====================
+# Homebrew (early, so brew-installed tools are available)
+# ====================
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# ====================
 # Oh-My-Zsh Configuration
 # ====================
 ZSH=$HOME/.oh-my-zsh
@@ -144,7 +149,7 @@ unalias gk gke 2>/dev/null  # Remove gitk GUI aliases from git plugin (unused)
 # ====================
 _macos() {
   # Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  # eval "$(/opt/homebrew/bin/brew shellenv)"
 
   # Oh-My-Zsh Configuration
   # PROMPT=$'\uf8ff %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'  # Original (Apple logo)
