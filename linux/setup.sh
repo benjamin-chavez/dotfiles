@@ -101,6 +101,28 @@ link_dir ~/.dotfiles/config/nvim ~/.config/nvim
 echo "Dotfiles have been symlinked to home directory."
 
 # ====================
+# Custom Scripts & GNOME Setup
+# ====================
+echo "📸 Setting up custom scripts..."
+mkdir -p ~/.local/bin
+
+if [ -f ~/.dotfiles/linux/screenshot-area.sh ]; then
+  ln -sf "$HOME/.dotfiles/linux/screenshot-area.sh" ~/.local/bin/screenshot-area.sh
+  chmod +x ~/.local/bin/screenshot-area.sh
+  echo "✓ screenshot-area.sh linked"
+else
+  echo "⚠️  screenshot-area.sh not found, skipping"
+fi
+
+# GNOME keybindings (only if running GNOME)
+if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || [ "$XDG_CURRENT_DESKTOP" = "ubuntu:GNOME" ]; then
+  if [ -f ~/.dotfiles/linux/gnome-keybindings.sh ]; then
+    echo "⌨️  Setting up GNOME keybindings..."
+    bash ~/.dotfiles/linux/gnome-keybindings.sh
+  fi
+fi
+
+# ====================
 # zoxide - UPGRADE: remove this section on Ubuntu 24.04+ (use apt instead)
 # ====================
 if ! command -v zoxide &>/dev/null; then
