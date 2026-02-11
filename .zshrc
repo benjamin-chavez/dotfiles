@@ -142,7 +142,7 @@ eval "$(direnv hook zsh)"
 # Additional Configs - Load personal aliases last
 # ====================
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
-[[ -f "$HOME/.secrets" ]] && source "$HOME/.secrets"
+ln -s ~/.dotfiles/.secrets ~/.secrets
 
 unalias gk gke 2>/dev/null  # Remove gitk GUI aliases from git plugin (unused)
 
