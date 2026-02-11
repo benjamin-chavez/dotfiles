@@ -52,7 +52,26 @@ packages=(
   libffi-dev          # Foreign function interface library
   liblzma-dev         # LZMA compression library
 )
-sudo apt install -y "${packages[@]}"
+
+failed_packages=()
+for pkg in "${packages[@]}"; do
+  if ! sudo apt install -y "$pkg" &>/dev/null; then
+    failed_packages+=("$pkg")
+    echo "  ✗ $pkg failed"
+  else
+    echo "  ✓ $pkg"
+  fi
+done
+
+if [ ${#failed_packages[@]} -gt 0 ]; then
+  echo ""
+  echo "⚠️⚠️⚠️  FAILED PACKAGES: ${failed_packages[*]}"
+  echo "⚠️⚠️⚠️  These packages may not be available on $(lsb_release -sc). Check manually."
+  echo ""
+fi
+
+# Ubuntu installs bat as 'batcat' due to naming conflict — symlink it
+ln -sf /usr/bin/batcat ~/.local/bin/bat
 
 # ====================
 # GitHub CLI - UPGRADE: remove this section on Ubuntu 22.04+ (use apt instead)
@@ -89,6 +108,7 @@ fi
 # Symlinks
 # ====================
 mkdir -p ~/.config
+mkdir -p ~/.local/bin
 mkdir -p ~/.zfunc  # Custom zsh completions
 
 ln -sf ~/.dotfiles/.zshrc ~/.zshrc
@@ -105,7 +125,6 @@ echo "Dotfiles have been symlinked to home directory."
 # Custom Scripts & GNOME Setup
 # ====================
 echo "📸 Setting up custom scripts..."
-mkdir -p ~/.local/bin
 
 if [ -f ~/.dotfiles/linux/scripts/screenshot-to-clipboard.sh ]; then
   ln -sf "$HOME/.dotfiles/linux/scripts/screenshot-to-clipboard.sh" ~/.local/bin/screenshot-to-clipboard.sh
@@ -245,4 +264,4 @@ else
   fi
 fi
 
-echo "🐧 Linux setup complete."b
+echo "🐧 Linux setup complete."
