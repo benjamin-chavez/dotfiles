@@ -30,6 +30,7 @@ packages=(
   fzf                 # Fuzzy finder
   htop                # Interactive process viewer (better top)
   jq                  # JSON processor
+  maim                # Screenshot utility (X11)
   ncdu                # Disk usage analyzer
   ripgrep             # Fast text search (better grep)
   tmux                # Terminal multiplexer
@@ -106,15 +107,15 @@ echo "Dotfiles have been symlinked to home directory."
 echo "📸 Setting up custom scripts..."
 mkdir -p ~/.local/bin
 
-if [ -f ~/.dotfiles/linux/screenshot-area.sh ]; then
-  ln -sf "$HOME/.dotfiles/linux/screenshot-area.sh" ~/.local/bin/screenshot-area.sh
-  chmod +x ~/.local/bin/screenshot-area.sh
-  echo "✓ screenshot-area.sh linked"
+if [ -f ~/.dotfiles/linux/scripts/screenshot-to-clipboard.sh ]; then
+  ln -sf "$HOME/.dotfiles/linux/scripts/screenshot-to-clipboard.sh" ~/.local/bin/screenshot-to-clipboard.sh
+  chmod +x ~/.local/bin/screenshot-to-clipboard.sh
+  echo "✓ screenshot-to-clipboard.sh linked"
 else
-  echo "⚠️  screenshot-area.sh not found, skipping"
+  echo "⚠️  screenshot-to-clipboard.sh not found, skipping"
 fi
 
-# GNOME keybindings (only if running GNOME)
+# GNOME keyindings (only if running GNOME)
 if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || [ "$XDG_CURRENT_DESKTOP" = "ubuntu:GNOME" ]; then
   if [ -f ~/.dotfiles/linux/gnome-keybindings.sh ]; then
     echo "⌨️  Setting up GNOME keybindings..."
@@ -244,4 +245,4 @@ else
   fi
 fi
 
-echo "🐧 Linux setup complete."
+echo "🐧 Linux setup complete."b

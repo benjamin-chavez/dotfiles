@@ -173,7 +173,7 @@ _macos() {
 # ====================
 _linux() {
   # Oh-My-Zsh Configuration
-  PROMPT=$'\uf8ff %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+  # PROMPT=$'\uf8ff %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
   # Ruby (rbenv)
   export PATH="${HOME}/.rbenv/bin:${PATH}"

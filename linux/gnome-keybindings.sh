@@ -14,8 +14,8 @@ path="$keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/cust
 gsettings set $keys custom-keybindings \
   "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 
-gsettings set $path name "Area Screenshot"
-gsettings set $path command "$HOME/.local/bin/screenshot-area.sh"
+gsettings set $path name "Screenshot to Clipboard"
+gsettings set $path command "$HOME/.local/bin/screenshot-to-clipboard.sh"
 gsettings set $path binding "<Control><Shift>4"
 
 echo "✓ GNOME keybindings configured"
