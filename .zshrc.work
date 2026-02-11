@@ -26,3 +26,9 @@ export PATH="$HOME/.dotnet:$PATH"
 # ====================
 # . "$HOME/.local/bin/env"
 # eval "$(uv generate-shell-completion zsh)"
+
+# ====================
+# Aliases  
+# ====================
+alias vtoken="/Users/benc/Code/veracity-auth-token/veracity-auth-token-golang/vtoken"  # Veracity Auth Token
+
